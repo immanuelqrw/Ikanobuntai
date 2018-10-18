@@ -1,0 +1,22 @@
+Smogon Tier
+  Updated on a monthly(?) basis
+Create your own League
+  Set rules for a specific League
+    StartLevel, EndLevel, IsLegendary, Stage, Type - MainType/SubType, TotalLevel
+  Set participants
+    Invitations
+  Set start and end dates
+  Auto create all battles on league start
+Create Tiers for your own League
+League Champion Rank
+League Iteration
+League Calendar
+Showdown scheduling and auto updates
+  Enforced Battle Times or Due Dates
+Type of League [Round Robin | Single Elimination Tournament | Double Elimination Tournament]
+PokemonTeam Global or per League
+Admin of League
+  Can Decide Winner of League after all matches
+    Allows for Team battles
+League Team
+Moves that each pokemon can learn and specific levels and methods
