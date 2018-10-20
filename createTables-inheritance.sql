@@ -1,9 +1,9 @@
 USE "Ikanobuntai";
 
 
-CREATE TABLE "Base" (
+CREATE TABLE "TableBase" (
   "createdOn" TIMESTAMP NOT NULL,
-  "lastModifiedOn" TIMESTAMP NOT NULL,
+  "modifiedOn" TIMESTAMP NOT NULL,
   "removedOn" TIMESTAMP,
 );
 
@@ -13,28 +13,28 @@ CREATE TABLE "Elo" (
   "id" BIGSERIAL PRIMARY KEY,
   "divider" SMALLINT NOT NULL,
   "k" SMALLINT NOT NULL,
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "Rank" (
   "id" BIGSERIAL PRIMARY KEY,
   "name" VARCHAR(64) NOT NULL UNIQUE,
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "Tier" (
   "id" BIGSERIAL PRIMARY KEY,
   "name" VARCHAR(64) NOT NULL UNIQUE,
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "Stage" (
   "id" BIGSERIAL PRIMARY KEY,
   "name" VARCHAR(64) NOT NULL UNIQUE,
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "Title" (
   "id" BIGSERIAL PRIMARY KEY,
   "name" VARCHAR(64) NOT NULL UNIQUE,
   "tierId" BIGINT NOT NULL REFERENCES "Tier" ("id"),
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "Configuration" (
   "id" BIGSERIAL PRIMARY KEY,
@@ -43,7 +43,7 @@ CREATE TABLE "Configuration" (
   "type" VARCHAR(32) NOT NULL,
   "tierId" BIGINT NOT NULL REFERENCES "Tier" ("id"),
   UNIQUE KEY "uq_name_tier" ("name", "tierId"),
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "League" (
   "id" BIGSERIAL PRIMARY KEY,
@@ -51,7 +51,7 @@ CREATE TABLE "League" (
   "stageId" BIGINT NOT NULL REFERENCES "Stage" ("id"),
   "tierId" BIGINT NOT NULL REFERENCES "Tier" ("id"),
   "eloId" BIGINT NOT NULL REFERENCES "Elo" ("id"),
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "TrainerUser" (
   "id" BIGSERIAL PRIMARY KEY,
@@ -60,7 +60,7 @@ CREATE TABLE "TrainerUser" (
   "passwordHash" CHAR(64) NOT NULL,
   "passwordSalt" CHAR(64) NOT NULL,
   "oAuthId" CHAR(64) NOT NULL,
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "Trainer" (
   "id" BIGSERIAL PRIMARY KEY,
@@ -69,7 +69,7 @@ CREATE TABLE "Trainer" (
   "tierId" BIGINT NOT NULL REFERENCES "Tier" ("id"),
   "rankId" BIGINT NOT NULL REFERENCES "Rank" ("id"),
   "rating" SMALLINT NOT NULL DEFAULT 1000 CHECK ("rating" >= 1000),
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "TrainerTitle" (
   "id" BIGSERIAL PRIMARY KEY,
@@ -77,7 +77,7 @@ CREATE TABLE "TrainerTitle" (
   "titleId" BIGINT NOT NULL REFERENCES "Title" ("id"),
   "wonOn" TIMESTAMP NOT NULL,
   "lostOn" TIMESTAMP,
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "BattleRating" (
   "id" BIGSERIAL PRIMARY KEY,
@@ -86,7 +86,7 @@ CREATE TABLE "BattleRating" (
   "leagueId" BIGINT NOT NULL REFERENCES "League" ("id"),
   "value" SMALLINT NOT NULL,
   CHECK ("DefenderTitleId" <> "ChallengerTitleId"),
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "Battle" (
   "id" BIGSERIAL PRIMARY KEY,
@@ -97,7 +97,7 @@ CREATE TABLE "Battle" (
   "value" SMALLINT NOT NULL,
   "foughtOn" TIMESTAMP NOT NULL,
   CHECK ("DefenderId" <> "ChallengerId"),
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 -- POKEMON tables
 
@@ -105,7 +105,7 @@ CREATE TABLE "Ability" (
   "id" BIGSERIAL PRIMARY KEY,
   "name" VARCHAR(32) NOT NULL UNIQUE,
   "description" VARCHAR(256) NOT NULL,
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TYPE "STAT" AS ENUM (
   'HP',
@@ -121,7 +121,7 @@ CREATE TABLE "Nature" (
   "name" VARCHAR(20) NOT NULL UNIQUE,
   "riseStat" STAT,
   "dropStat" STAT,
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "IndividualValue" (
   "id" BIGSERIAL PRIMARY KEY
@@ -131,7 +131,7 @@ CREATE TABLE "IndividualValue" (
   "specialAttack" SMALLINT NOT NULL CHECK ("specialAttack" BETWEEN 0 AND 31)
   "specialDefense" SMALLINT NOT NULL CHECK ("specialDefense" BETWEEN 0 AND 31)
   "speed" SMALLINT NOT NULL CHECK ("speed" BETWEEN 0 AND 31),
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TYPE "POKETYPE" AS ENUM (
   'GRASS',
@@ -163,7 +163,7 @@ CREATE TABLE "Pokemon" (
   "form" VARCHAR(32),
   "mainType" POKETYPE NOT NULL,
   "subType" POKETYPE,
-  "baseStatTotal" SMALLINT NOT NULL CHECK("baseStatTotal" BETWEEN 0 AND 1530),
+  "TableBaseStatTotal" SMALLINT NOT NULL CHECK("TableBaseStatTotal" BETWEEN 0 AND 1530),
   "hpBaseStat" SMALLINT NOT NULL CHECK ("hpBaseStat" BETWEEN 0 AND 255),
   "attackBaseStat" SMALLINT NOT NULL CHECK ("attackBaseStat" BETWEEN 0 AND 255),
   "defenseBaseStat" SMALLINT NOT NULL CHECK ("defenseBaseStat" BETWEEN 0 AND 255),
@@ -178,13 +178,13 @@ CREATE TABLE "Pokemon" (
   "secondAbilityId" BIGINT NOT NULL REFERENCES "Ability" ("id"),
   "hiddenAbilityId" BIGINT REFERENCES "Ability" ("id"),
   "prevolvedPokemonId" BIGINT REFERENCES "Pokemon" ("id"),
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "PokemonTier" (
   "id" BIGSERIAL PRIMARY KEY,
   "pokemonId" BIGINT NOT NULL REFERENCES "Pokemon" ("id"),
   "tierId" BIGINT NOT NULL REFERENCES "Tier" ("id"),
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 CREATE TABLE "PokemonTrainer" (
   "id" BIGSERIAL PRIMARY KEY,
@@ -193,6 +193,6 @@ CREATE TABLE "PokemonTrainer" (
   "natureId" BIGINT NOT NULL REFERENCES "Nature" ("id"),
   "abilityId" BIGINT NOT NULL REFERENCES "Ability" ("id"),
   "individualValueId" BIGINT NOT NULL REFERENCES "IndividualValue" ("id"),
-) INHERITS ("Base");
+) INHERITS ("TableBase");
 
 -- Team
