@@ -154,35 +154,48 @@ CREATE TYPE "POKETYPE" AS ENUM (
   'FAIRY'
 );
 
--- TODO Add smogon tier connection
--- TODO Combine Mythical and Legendary into one field?
+CREATE TABLE "Generation" (
+  "id" BIGSERIAL PRIMARY KEY,
+  "number" SMALLINT NOT NULL,
+  "region" VARCHAR(8) NOT NULL,
+) INHERITS ("TableBase");
+
+-- TODO Add smogon tier generation connection -- separate join table with generation
+-- TODO add unique indexes
 CREATE TABLE "Pokemon" (
   "id" BIGSERIAL PRIMARY KEY,
   "number" VARCHAR(4) NOT NULL, -- maybe change to int
   "name" VARCHAR(32) NOT NULL,
   "form" VARCHAR(32),
+  "isLegendary" BOOLEAN NOT NULL DEFAULT FALSE,
+  "isMythical" BOOLEAN NOT NULL DEFAULT FALSE,
+  "isMega" BOOLEAN NOT NULL DEFAULT FALSE,
+  "prevolvedPokemonId" BIGINT REFERENCES "Pokemon" ("id"),
+) INHERITS ("TableBase");
+
+CREATE TABLE "PokemonGeneration" (
+  "id" BIGSERIAL PRIMARY KEY,
+  "pokemonId" BIGINT NOT NULL REFERENCES "Pokemon" ("id"),
+  "generationId" BIGINT NOT NULL REFERENCES "Generation" ("id"),
   "mainType" POKETYPE NOT NULL,
   "subType" POKETYPE,
-  "TableBaseStatTotal" SMALLINT NOT NULL CHECK("TableBaseStatTotal" BETWEEN 0 AND 1530),
+  "stage" SMALLINT NOT NULL DEFAULT 1,
+  "baseStatTotal" SMALLINT NOT NULL CHECK("baseStatTotal" BETWEEN 0 AND 1530),
   "hpBaseStat" SMALLINT NOT NULL CHECK ("hpBaseStat" BETWEEN 0 AND 255),
   "attackBaseStat" SMALLINT NOT NULL CHECK ("attackBaseStat" BETWEEN 0 AND 255),
   "defenseBaseStat" SMALLINT NOT NULL CHECK ("defenseBaseStat" BETWEEN 0 AND 255),
   "specialAttackBaseStat" SMALLINT NOT NULL CHECK ("specialAttackBaseStat" BETWEEN 0 AND 255),
   "specialDefenseBaseStat" SMALLINT NOT NULL CHECK ("specialDefenseBaseStat" BETWEEN 0 AND 255),
   "speedBaseStat" SMALLINT NOT NULL CHECK ("speedBaseStat" BETWEEN 0 AND 255),
-  "stage" SMALLINT NOT NULL DEFAULT 1,
-  "isLegendary" BOOLEAN NOT NULL DEFAULT FALSE,
-  "isMythical" BOOLEAN NOT NULL DEFAULT FALSE,
-  "isMega" BOOLEAN NOT NULL DEFAULT FALSE,
-  "abilityId" BIGINT NOT NULL REFERENCES "Ability" ("id"),
-  "secondAbilityId" BIGINT NOT NULL REFERENCES "Ability" ("id"),
+  "abilityId" BIGINT REFERENCES "Ability" ("id"),
+  "secondAbilityId" BIGINT REFERENCES "Ability" ("id"),
   "hiddenAbilityId" BIGINT REFERENCES "Ability" ("id"),
-  "prevolvedPokemonId" BIGINT REFERENCES "Pokemon" ("id"),
 ) INHERITS ("TableBase");
 
 CREATE TABLE "PokemonTier" (
   "id" BIGSERIAL PRIMARY KEY,
   "pokemonId" BIGINT NOT NULL REFERENCES "Pokemon" ("id"),
+  "generationId" BIGINT NOT NULL REFERENCES "Generation" ("id"),
   "tierId" BIGINT NOT NULL REFERENCES "Tier" ("id"),
 ) INHERITS ("TableBase");
 
