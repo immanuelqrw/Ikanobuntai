@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry"
+      }
+    ],
+    "@babel/react"
+  ],
+  "plugins": [
+    "babel-plugin-transform-class-properties"
+  ]
+}
