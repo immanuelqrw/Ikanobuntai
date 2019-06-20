@@ -1,4 +1,4 @@
-import { hexToRgb, whiteColor } from "assets/jss/material-dashboard-react.jsx";
+import { hexToRgb, whiteColor } from "assets/jss/ikanobuntai.jsx";
 
 const customTabsStyle = {
   cardTitle: {

@@ -2,7 +2,7 @@ import {
   blackColor,
   whiteColor,
   hexToRgb
-} from "assets/jss/material-dashboard-react.jsx";
+} from "assets/jss/ikanobuntai.jsx";
 
 const cardStyle = {
   card: {

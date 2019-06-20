@@ -2,7 +2,7 @@ import {
   drawerWidth,
   transition,
   container
-} from "assets/jss/material-dashboard-react.jsx";
+} from "assets/jss/ikanobuntai.jsx";
 
 const appStyle = theme => ({
   wrapper: {

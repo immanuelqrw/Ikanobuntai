@@ -2,9 +2,9 @@ import {
   defaultFont,
   dangerColor,
   whiteColor
-} from "assets/jss/material-dashboard-react.jsx";
+} from "assets/jss/ikanobuntai.jsx";
 
-import dropdownStyle from "assets/jss/material-dashboard-react/dropdownStyle.jsx";
+import dropdownStyle from "assets/jss/ikanobuntai/dropdownStyle.jsx";
 
 const headerLinksStyle = theme => ({
   ...dropdownStyle(theme),

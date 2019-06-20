@@ -14,7 +14,7 @@ import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
 import RTLNavbarLinks from "./RTLNavbarLinks.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 
-import headerStyle from "assets/jss/material-dashboard-react/components/headerStyle.jsx";
+import headerStyle from "assets/jss/ikanobuntai/components/headerStyle.jsx";
 
 function Header({ ...props }) {
   function makeBrand() {

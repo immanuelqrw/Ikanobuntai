@@ -14,7 +14,7 @@ import Icon from "@material-ui/core/Icon";
 import AdminNavbarLinks from "components/Navbars/AdminNavbarLinks.jsx";
 import RTLNavbarLinks from "components/Navbars/RTLNavbarLinks.jsx";
 
-import sidebarStyle from "assets/jss/material-dashboard-react/components/sidebarStyle.jsx";
+import sidebarStyle from "assets/jss/ikanobuntai/components/sidebarStyle.jsx";
 
 const Sidebar = ({ ...props }) => {
   // verifies if routeName is the one active (in browser input)
@@ -81,7 +81,7 @@ const Sidebar = ({ ...props }) => {
   var brand = (
     <div className={classes.logo}>
       <a
-        href="https://www.creative-tim.com"
+        href="https://www.immanuelqrw.com"
         className={classNames(classes.logoLink, {
           [classes.logoLinkRTL]: props.rtlActive
         })}

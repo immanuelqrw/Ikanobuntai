@@ -3,9 +3,9 @@ import {
   whiteColor,
   grayColor,
   hexToRgb
-} from "assets/jss/material-dashboard-react.jsx";
+} from "assets/jss/ikanobuntai.jsx";
 
-const rtlStyle = {
+const dashboardStyle = {
   successText: {
     color: successColor[0]
   },
@@ -47,10 +47,7 @@ const rtlStyle = {
     margin: "0",
     fontSize: "14px",
     marginTop: "0",
-    marginBottom: "0",
-    "& a": {
-      color: whiteColor
-    }
+    marginBottom: "0"
   },
   cardTitle: {
     color: grayColor[2],
@@ -82,4 +79,4 @@ const rtlStyle = {
   }
 };
 
-export default rtlStyle;
+export default dashboardStyle;

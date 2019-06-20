@@ -40,7 +40,7 @@ import {
   completedTasksChart
 } from "variables/charts.jsx";
 
-import rtlStyle from "assets/jss/material-dashboard-react/views/rtlStyle.jsx";
+import rtlStyle from "assets/jss/ikanobuntai/views/rtlStyle.jsx";
 
 import avatar from "assets/img/faces/marc.jpg";
 
@@ -305,7 +305,7 @@ class RTLPage extends React.Component {
                     واجهة المستخدم المادية
                   </a>{" "}
                   ونصب من قبل{" "}
-                  <a target="_blank" href="https://www.creative-tim.com/">
+                  <a target="_blank" href="https://www.immanuelqrw.com/">
                     الإبداعية تيم
                   </a>
                   . يرجى التحقق من{" "}

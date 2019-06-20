@@ -7,7 +7,7 @@ import {
   roseColor,
   grayColor,
   defaultFont
-} from "assets/jss/material-dashboard-react.jsx";
+} from "assets/jss/ikanobuntai.jsx";
 
 const tableStyle = theme => ({
   warningTableHeader: {

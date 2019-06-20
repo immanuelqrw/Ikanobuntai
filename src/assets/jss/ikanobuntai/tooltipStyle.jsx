@@ -1,4 +1,4 @@
-import { blackColor, hexToRgb } from "assets/jss/material-dashboard-react.jsx";
+import { blackColor, hexToRgb } from "assets/jss/ikanobuntai.jsx";
 
 const tooltipStyle = {
   tooltip: {

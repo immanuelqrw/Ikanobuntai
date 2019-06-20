@@ -2,7 +2,7 @@ import {
   primaryColor,
   blackColor,
   hexToRgb
-} from "assets/jss/material-dashboard-react.jsx";
+} from "assets/jss/ikanobuntai.jsx";
 
 const checkboxAdnRadioStyle = {
   root: {

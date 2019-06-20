@@ -15,7 +15,7 @@ import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
 
 import routes from "routes.js";
 
-import rtlStyle from "assets/jss/material-dashboard-react/layouts/rtlStyle.jsx";
+import rtlStyle from "assets/jss/ikanobuntai/layouts/rtlStyle.jsx";
 
 import image from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/reactlogo.png";

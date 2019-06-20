@@ -1,4 +1,4 @@
-import { hexToRgb, blackColor } from "assets/jss/material-dashboard-react.jsx";
+import { hexToRgb, blackColor } from "assets/jss/ikanobuntai.jsx";
 
 const cardAvatarStyle = {
   cardAvatar: {

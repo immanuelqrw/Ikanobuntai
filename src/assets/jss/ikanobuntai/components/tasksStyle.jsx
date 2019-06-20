@@ -3,9 +3,9 @@ import {
   primaryColor,
   dangerColor,
   grayColor
-} from "assets/jss/material-dashboard-react.jsx";
-import tooltipStyle from "assets/jss/material-dashboard-react/tooltipStyle.jsx";
-import checkboxAdnRadioStyle from "assets/jss/material-dashboard-react/checkboxAdnRadioStyle.jsx";
+} from "assets/jss/ikanobuntai.jsx";
+import tooltipStyle from "assets/jss/ikanobuntai/tooltipStyle.jsx";
+import checkboxAdnRadioStyle from "assets/jss/ikanobuntai/checkboxAdnRadioStyle.jsx";
 const tasksStyle = {
   ...tooltipStyle,
   ...checkboxAdnRadioStyle,

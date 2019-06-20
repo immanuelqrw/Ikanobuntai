@@ -1,4 +1,4 @@
-import { grayColor } from "assets/jss/material-dashboard-react.jsx";
+import { grayColor } from "assets/jss/ikanobuntai.jsx";
 
 const cardFooterStyle = {
   cardFooter: {
