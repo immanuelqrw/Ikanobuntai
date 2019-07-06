@@ -1,0 +1,32 @@
+{
+  "extends": "./paths.json",
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "module": "esnext",
+    "jsx": "preserve",
+    "target": "es2018",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "include": [
+    "./src/"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

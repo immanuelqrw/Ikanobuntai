@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -9,10 +9,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.([tj])sx?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: "awesome-typescript-loader"
         }
       },
       {
@@ -29,5 +29,11 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  externals: {
+    "react": "React",
+    "react-dom": "ReactDOM",
+  },
+  // addition - add source-map support
+  devtool: "source-map"
 };
